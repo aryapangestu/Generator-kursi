@@ -17,7 +17,8 @@ def load_data(sheets_url):
 st.set_page_config(layout="wide", page_icon="🪑",
                    page_title="Generator")
 st.title("🪑 Generator")
-left, right = st.columns([1, 3])
+right = st
+left = st.sidebar
 
 right.write("Hasil:")
 
