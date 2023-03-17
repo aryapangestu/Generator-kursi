@@ -183,18 +183,38 @@ else:
         {"NO": int, "NIM": str, "ASPRAK": str})
     df_ETemplate = df_ETemplate.astype(
         {"NO": int, "NIM": str, "ASPRAK": str})
-    # right.table(df[df["Kelas"] == kelas].sample(frac=1).reset_index(drop=True))
 
-    ATable.table(df_ATemplate.set_index('NO').style.apply(highlight, axis=1))
+    # CSS to inject contained in a string
+    hide_table_row_index = """
+                <style>
+                thead tr th:first-child {display:none}
+                tbody th {display:none}
+                </style>
+                """
+    # Inject CSS with Markdown
+    ATable.markdown(hide_table_row_index, unsafe_allow_html=True)
+    BTable.markdown(hide_table_row_index, unsafe_allow_html=True)
+    CTable.markdown(hide_table_row_index, unsafe_allow_html=True)
+    DTable.markdown(hide_table_row_index, unsafe_allow_html=True)
+    ETable.markdown(hide_table_row_index, unsafe_allow_html=True)
 
-    BTable.table(df_BTemplate.set_index('NO').style.apply(highlight, axis=1))
+    df_AStyler = df_ATemplate.set_index(
+        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+    df_BStyler = df_BTemplate.set_index(
+        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+    df_CStyler = df_CTemplate.set_index(
+        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+    df_DStyler = df_DTemplate.set_index(
+        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+    df_EStyler = df_ETemplate.set_index(
+        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
 
-    CTable.table(df_CTemplate.set_index('NO').style.apply(highlight, axis=1))
+    ATable.table(df_AStyler)
 
-    DTable.table(df_DTemplate.set_index('NO').style.apply(highlight, axis=1))
+    BTable.table(df_BStyler)
 
-    ETable.table(df_ETemplate.set_index('NO').style.apply(highlight, axis=1))
+    CTable.table(df_CStyler)
 
-    # right.write('## Selected')
-    # selected_row = grid_table["selected_rows"]
-    # video.dataframe(selected_row)
+    DTable.table(df_DStyler)
+
+    ETable.table(df_EStyler)
