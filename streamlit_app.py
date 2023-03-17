@@ -1,5 +1,4 @@
 import streamlit as st
-from cryptography.fernet import Fernet
 import pandas as pd
 import streamlit_nested_layout
 import numpy as np
