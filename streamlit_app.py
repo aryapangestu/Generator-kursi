@@ -77,7 +77,7 @@ else:
     df_kelas = df[df["Kelas"] == kelas].reset_index(drop=True)
     k = 1
     A1, B1 = left.columns(2)
-    for i, todo_text in df_kelas["NIM"].iteritems():
+    for i, todo_text in df_kelas["NIM"].items():
         if k >= 1 and k <= np.ceil(len(df_kelas["NIM"])/2):
             A1.checkbox(f'{todo_text}',
                         key='optionNIM_'+str(k))
@@ -194,15 +194,15 @@ else:
     ETable.markdown(hide_table_row_index, unsafe_allow_html=True)
 
     df_AStyler = df_ATemplate.set_index(
-        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+        'NO', drop=False).style.apply(highlight, axis=1).hide()
     df_BStyler = df_BTemplate.set_index(
-        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+        'NO', drop=False).style.apply(highlight, axis=1).hide()
     df_CStyler = df_CTemplate.set_index(
-        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+        'NO', drop=False).style.apply(highlight, axis=1).hide()
     df_DStyler = df_DTemplate.set_index(
-        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+        'NO', drop=False).style.apply(highlight, axis=1).hide()
     df_EStyler = df_ETemplate.set_index(
-        'NO', drop=False).style.apply(highlight, axis=1).hide_index()
+        'NO', drop=False).style.apply(highlight, axis=1).hide()
 
     ATable.table(df_AStyler)
 
